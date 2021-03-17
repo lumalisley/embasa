@@ -5,14 +5,26 @@
   "main": "index.js",
   "dependencies": {
     "cypress": "^6.7.1",
-    "cypress-cucumber-preprocessor": "^4.0.1"
+    "cypress-cucumber-preprocessor": "^4.0.1",
+    "cypress-multi-reporters": "^1.2.4",
+    "mocha-junit-reporter": "^1.23.3"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "npm run esl && cypress open",
+    "cypress:verify": "cypress verify",
+    "cypress version": "cypress version",
+    "cypress:run:headed": "npm run esl && cypress run --headed",
+    "cypress:run:headless": "npm run esl && cypress run --headless",
+    "cypress:run:reporter": "npm run esl && cypress run --headless --config defealtCommandTimeout=10000 --reporter junit --reporter-open",
+    "cypress:run": "npm run esl && cypress run",
+    "esl": "eslint .",
+    "esl:fix": "eslint --fix .",
+    "scripts": "cypress run",
+    "test": "npm run scripts"
   },
   "repository": {
     "type": "git",
